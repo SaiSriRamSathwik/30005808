@@ -1,0 +1,30 @@
+CREATE DATABASE hotel_reservation_system;
+
+USE hotel_reservation_system;
+
+CREATE TABLE Room (
+    room_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_number VARCHAR(10) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    price_per_night DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(20) NOT NULL CHECK (status IN ('available', 'booked'))
+);
+
+CREATE TABLE Customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL,
+    address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Reservation (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    check_in_date DATE NOT NULL,
+    check_out_date DATE NOT NULL,
+    status VARCHAR(20) NOT NULL CHECK (status IN ('reserved', 'canceled')),
+    FOREIGN KEY (room_id) REFERENCES Room(room_id),
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
