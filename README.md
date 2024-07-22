@@ -16,7 +16,9 @@ The application handles various exceptions such as SQL exceptions, invalid input
 Code Structure
 Main.java - The main entry point of the application.
 DBConnection.java - Manages the database connection.
-Room.java - Contains room-related operations.
-Customer.java - Contains customer-related operations.
-Reservation.java - Contains reservation-related operations.
+{
+Room section- Contains room-related operations.
+Customer section- Contains customer-related operations.
+Reservation Section- Contains reservation-related operations.
 utils/ - Utility classes for handling input validation and other common tasks.
+}
